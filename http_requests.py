@@ -57,4 +57,5 @@ def perform_redirect_request():
     """Perform a request to a redirect URL and return the Location header that come in the response"""
     # HINT: you should use the allow_redirects parameter while doing the request
     url = 'https://httpbin.org/redirect/1'
-    response = requests.get()
+    response = requests.get(url, allow_redirects=True)
+    location_header = response.headers('Location')
