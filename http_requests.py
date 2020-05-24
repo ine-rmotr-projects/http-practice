@@ -25,7 +25,7 @@ def perform_post_request():
         'first_name': 'Guido',
         'last_name': 'van Rossum'
     }
-    response = requests.post(url, data=data)
+    response = requests.post(url, json=data)
 
 
 def perform_put_request():
@@ -35,7 +35,7 @@ def perform_put_request():
         'first_name': 'Guido',
         'last_name': 'van Rossum'
     }
-    response = requests.put(url, data=data)
+    response = requests.put(url, json=data)
 
 
 def perform_patch_request():
@@ -44,7 +44,7 @@ def perform_patch_request():
     data = {
         'first_name': 'Guido'
     }
-    response = requests.patch(url, data=data)
+    response = requests.patch(url, json=data)
 
 
 def perform_delete_request():
@@ -57,5 +57,5 @@ def perform_redirect_request():
     """Perform a request to a redirect URL and return the Location header that come in the response"""
     # HINT: you should use the allow_redirects parameter while doing the request
     url = 'https://httpbin.org/redirect/1'
-    response = requests.get(url, allow_redirects=True)
-    location_header = response.headers('Location')
+    response = requests.get(url, allow_redirects=False)
+    location_header = response.headers['Location']
